@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "AGGrid";
+}
+
+<h2>AGGrid</h2>
+
+@*//script used to load the grid*@
+<script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+<h1>Hello from ag-grid!</h1>
+
+<div id="myGrid" style="height: 600px;width:800px;" class="ag-theme-balham"></div>
+
+<script type="text/javascript" charset="utf-8">
+    // specify the columns
+    var columnDefs = [
+        { headerName: "InvoiceNumber", field: "InvoiceNumber" },
+        { headerName: "Amount", field: "Amount" },
+        { headerName: "CostCategory", field: "CostCategory" },
+        { headerName: "Period", field: "Period" },
+    ];
+
+    // let the grid know which columns to use
+    var gridOptions = {
+        columnDefs: columnDefs,
+        defaultColDef: {
+            sortable: true,
+            filter: true
+        },
+        rowClassRules: {
+        // row style function
+            'bigexpense-warning': function(params) {
+                var numExpense = params.data.Amount;
+                return  numExpense > 20 && numExpense <= 50;
+            },
+            // row style expression
+            'bigexpense-breach': 'data.Amount > 50',
+            'bigexpense-ok': 'data.Amount <=20'
+        }
+    };
+
+    // lookup the container we want the Grid to use
+    var eGridDiv = document.querySelector('#myGrid');
+
+    // create the grid passing in the div to use together with the columns & data we want to use
+    new agGrid.Grid(eGridDiv, gridOptions);
+
+    agGrid.simpleHttpRequest({ url: './AGGrid/ArrayData' }).then(function (data) {
+        gridOptions.api.setRowData(data);
+    });
+
+</script>

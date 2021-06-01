@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Aggrid2";
+}
+
+<h2>Aggrid2</h2>
+
+@*MODAL LIBRARIES*@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+/*.cell-vertical-align-text-left {
+  display: flex!important;
+  align-items: center;
+}
+
+.cell-vertical-align-text-right {
+  display: flex!important;
+  flex-direction: row-reverse;
+  text-align: right!important;
+  align-items: center;
+}*/
+
+/*.cell-vertical-align-text-top {
+  display: flex !important;
+  flex-direction: row-reverse;
+  text-align: right!important;
+  align-items: flex-start!important;
+}*/
+ .ag-cell{
+     align-items: flex-start!important;
+ }
+    .ag-picker-field-wrapper {
+        align-items: flex-start!important;
+    }
+</style>
+
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="ModalButton">Open Modal</button>
+
+<div id="EmailHolder">We get email here</div>
+<div id="myGrid" class="ag-theme-alpine" style="height:500px; width:1100px;"></div>
+<script>
+    var __basePath = './';
+</script>
+@*<script src="https://unpkg.com/@ag-grid-enterprise/all-modules@25.1.0/dist/ag-grid-enterprise.min.js"></script>*@
+<script src="~/js/ag-grid-enterprise.min.js"></script>
+@*<script src="~/js/Aggrid_refresh.js"></script>*@
+@*<script src="~/js/Aggrid_treeData.js"></script>*@
+@*<script src="~/js/Aggrid_treeDataSimple.js"></script>*@
+@*<script src="~/js/Aggrid_LeadsTree.js"></script>*@
+<script src="~/js/Aggrid_LeadsTree2.js"></script>
+@*<script src="~/js/Aggrid_leads.js"></script>*@
+
+
+
+
+@*MODAL START*@
+@*<div class="container">
+    <h2>Modal Example</h2>*@
+    <!-- Trigger the modal with a button -->
+    @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body" id="AggidModalData">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+@*</div>*@
+
+@*MODAL END*@
